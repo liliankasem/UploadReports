@@ -1,0 +1,40 @@
+﻿@section Breadcrumbs{
+    <ol class="breadcrumb navbar-breadcrumb">
+        <li>Import</li>
+    </ol>
+}
+
+<div class="side-body padding-top">
+    <div class="col-md-3">
+        <label for="datasetnameField">Report Name</label>
+        <input type="text" id="datasetnameField" /> 
+
+        <label for="filePathField">File Path</label>
+        <input type="text" id="filePathField" /> 
+
+        <button id="importButton" type="button" class="btn btn-success">Import Report</button>
+    </div>
+
+    <p></p>
+</div>
+
+
+@section PageScripts {
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+
+        var datasetName = document.getElementById('datasetnameField');
+        var filePath = document.getElementById('filePathField');
+
+        $("#importButton").click(function () {
+            $.get("/Dashboard/ImportPBIX?datasetName=" + datasetName.value + "&filePath=" + filePath.value)
+            .done(function (obj) {
+               
+            });
+        })
+
+    </script>
+
+    
+}
+@*$.get("/DashboardController/ImportPBIX?datasetName="+datasetName.value+"&filePath="+filePath.value)*@
